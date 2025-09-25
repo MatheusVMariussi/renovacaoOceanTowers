@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Towers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .tab-active {
+            background-color: #0d9488;
+            color: #ffffff;
+            border-color: #0d9488;
+        }
+        .tab-inactive {
+            background-color: #ffffff;
+            color: #475569;
+            border-color: #cbd5e1;
+        }
+        .tab-inactive:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+        .textured-bg {
+            background-color: #1e293b; 
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.07' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-700">
+
+    <header class="bg-slate-900 text-white shadow-lg textured-bg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-1/3"></div>
+            <div class="w-1/3 text-center">
+                <h1 class="text-xl md:text-2xl font-bold">Proposta de Renovação da Academia</h1>
+            </div>
+            <div class="w-1/3 flex justify-end">
+                <a href="CONDOMINIO EDIFICIO OCEAN TOWERS RESIDENCE (1).pdf" download="Orcamento-Academia-Ocean-Towers.pdf" class="hidden md:flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <span>Baixar Orçamento</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+
+        <section id="problema" class="pt-8">
+            <h2 class="text-3xl font-bold text-slate-800 text-center">Situação Atual: Nossos Desafios</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-8"></div>
+            <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Nossa academia atual, embora funcional, enfrenta limitações que impactam a experiência dos moradores. Equipamentos grandes e de função única ocupam um espaço valioso, limitando a variedade de treinos e a circulação. Além de alguns equipamentos que já passaram da hora de serem trocados</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4 border-red-700">
+                    <h3 class="font-bold text-xl mb-3 text-red-700">Equipamentos de Função Única</h3>
+                    <p>O banco de supino e o voador (pec-deck) são máquinas grandes que atendem a poucos grupos musculares, sendo ineficientes para um espaço compartilhado e com alta demanda por variedade.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4 border-orange-600">
+                    <h3 class="font-bold text-xl mb-3 text-orange-600">Ocupação Excessiva de Espaço</h3>
+                    <p>Juntos, estes equipamentos limitam a área livre para treinos funcionais, alongamentos e exercícios com peso corporal, criando um ambiente menos versátil e, por vezes, superlotado.</p>
+                </div>
+                <div class="md:col-span-2 flex justify-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 w-full md:max-w-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t-4 border-amber-600">
+                        <h3 class="font-bold text-xl mb-3 text-amber-600">Equipamentos a serem trocados por novos</h3>
+                        <p>Tanto a Adutora/Abdutora quanto a Flexora/Extensora estão muito velhas, e necessitam serem substituidas. No estado atual, além de terem uma má excução, corre o risco de lesionar quem está utilizando</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solucao" class="text-center mt-24">
+            <h2 class="text-3xl font-bold text-slate-800">O Coração da Renovação</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-2"></div>
+            <p class="text-teal-600 font-semibold text-xl mb-8">Wire Cross Smith Rack</p>
+            <p class="max-w-3xl mx-auto text-lg leading-relaxed mb-10">
+                Proponho uma reestruturação inteligente, substituindo 2 equipamentos grandes por uma única estação multifuncional. A ideia seria a retirada do banco de supino atual, e do pec-dec (voador), e com o espaço que ambos ocupam hoje, colocar essa estação. O WCSR é uma solução completa, nele seria possivel treinar de tudo, membros superiores e inferiores, principalmente com a inclusão do banco inclinável que será adicionado mais abaixo.
+            </p>
+            <div class="bg-white p-4 sm:p-8 rounded-xl shadow-xl border border-slate-200">
+                <div class="w-full max-w-3xl mx-auto">
+                    <img id="main-wcsr-image" src="https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-perspec.png" alt="Wire Cross Smith Rack" class="rounded-lg w-full h-auto object-contain mb-4 border-2 border-slate-200 bg-slate-50" style="max-height: 500px;">
+                    <div id="thumbnail-container" class="flex justify-center items-center gap-2 sm:gap-4 p-2">
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="flex justify-center flex-wrap gap-2 sm:gap-4 mb-6">
+                        <button id="tab-cross" class="tab-btn tab-active px-4 py-2 rounded-lg font-semibold border-2 transition-all duration-300">Cross Over</button>
+                        <button id="tab-smith" class="tab-btn tab-inactive px-4 py-2 rounded-lg font-semibold border-2 transition-all duration-300">Máquina Smith</button>
+                        <button id="tab-rack" class="tab-btn tab-inactive px-4 py-2 rounded-lg font-semibold border-2 transition-all duration-300">Rack Livre</button>
+                    </div>
+                    <div id="wcsr-content" class="text-left max-w-2xl mx-auto p-6 bg-slate-100 rounded-lg min-h-[190px]">
+                        <h3 id="wcsr-title" class="font-bold text-xl text-teal-800 mb-3"></h3>
+                        <p id="wcsr-description" class="text-slate-600 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="outros-equipamentos" class="mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 text-center">Modernização Completa: Outros Equipamentos</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-8"></div>
+            <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Além da versátil estação WCSR, a renovação inclui a substituição de máquinas essenciais para o treino de membros inferiores, trazendo mais conforto, ergonomia e eficiência para os condôminos. Além de um banco regulável que complementa a WCSR, tornando-a ainda mais completa</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://www.movement.com.br/wp-content/uploads/2025/02/EXTENSORA-FLEXORA-NEW-IDEA-2.jpg" alt="Máquina Extensora e Flexora" class="rounded-md mx-auto mb-4 w-full h-auto object-cover" style="max-height: 350px;">
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-teal-800">Cadeira Extensora / Flexora</h3>
+                        <p class="text-slate-600 flex-grow">Um equipamento 2 em 1 que permite trabalhar a parte anterior e posterior da coxa com ajustes simples e rápidos. Seu design moderno e biomecânica aprimorada garantem um exercício seguro e eficaz.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://www.movement.com.br/wp-content/uploads/2025/02/ABDUTOR-ADUTOR-NEW-IDEA.4-1.jpg" alt="Máquina Adutora e Abdutora" class="rounded-md mx-auto mb-4 w-full h-auto object-cover" style="max-height: 350px;">
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-teal-800">Cadeira Adutora / Abdutora</h3>
+                        <p class="text-slate-600 flex-grow">Outro equipamento de dupla função, focado nos músculos internos e externos da coxa. Oferece maior conforto e amplitude de movimento, com uma torre de pesos carenada para maior segurança.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center md:col-span-2 lg:col-span-1 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://www.movement.com.br/wp-content/uploads/2025/05/Banco-ajustavel-Axis-3.png" alt="Banco Regulável" class="rounded-md mx-auto mb-4 w-full h-auto object-cover" style="max-height: 350px;">
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-teal-800">Banco Regulável</h3>
+                        <p class="text-slate-600 flex-grow">Essencial para uma variedade de exercícios com pesos livres, este banco robusto oferece múltiplos ajustes de inclinação, garantindo a postura correta e a versatilidade nos treinos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="investimento" class="mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 text-center">Análise do Investimento</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-8"></div>
+            <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Para garantir total transparência, abaixo temos o investimento necessário para esta transformação. O gráfico e a tabela a seguir ilustram a distribuição dos custos entre os novos equipamentos, que modernizarão completamente nossa academia.</p>
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 lg:col-span-2">
+                    <div class="chart-container">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 lg:col-span-3">
+                    <h3 class="font-bold text-xl mb-4 text-center text-slate-800">Detalhamento dos Custos</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="p-3 text-left font-semibold text-slate-600">Item</th>
+                                    <th class="p-3 text-right font-semibold text-slate-600">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-slate-200"><td colspan="2" class="p-2 bg-slate-200 font-bold text-slate-700">Equipamentos Principais</td></tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Estação WCSR</td>
+                                    <td class="p-3 text-right font-semibold">R$ 39.900,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Banco Regulável</td>
+                                    <td class="p-3 text-right font-semibold">R$ 5.100,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Extensora/Flexora</td>
+                                    <td class="p-3 text-right font-semibold">R$ 26.000,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Abdutor/Adutor</td>
+                                    <td class="p-3 text-right font-semibold">R$ 21.300,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200"><td colspan="2" class="p-2 bg-slate-200 font-bold text-slate-700">Pesos e Acessórios</td></tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Anilhas Olímpicas (170kg)</td>
+                                    <td class="p-3 text-right font-semibold">R$ 6.851,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Barra Olímpica 2.20m</td>
+                                    <td class="p-3 text-right font-semibold">R$ 1.690,00</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Puxadores Diversos</td>
+                                    <td class="p-3 text-right font-semibold">R$ 366,05</td>
+                                </tr>
+                                <tr class="border-b border-slate-200 bg-slate-50 font-bold text-slate-700">
+                                    <td class="p-3">Subtotal</td>
+                                    <td class="p-3 text-right">R$ 101.207,05</td>
+                                </tr>
+                                <tr class="border-b border-slate-200">
+                                    <td class="p-3">Frete e Montagem</td>
+                                    <td class="p-3 text-right font-semibold">R$ 4.500,00</td>
+                                </tr>
+                                <tr class="bg-teal-600 text-white font-bold">
+                                    <td class="p-4 text-lg">Total</td>
+                                    <td class="p-4 text-right text-lg">R$ 105.707,05</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                     <div class="mt-6 text-center text-sm text-slate-600 bg-slate-100 p-4 rounded-lg">
+                        <p><strong>Condições:</strong> Entrada de 30% + 5 parcelas. (Negociável)</p>
+                        <p><strong>Prazo de Entrega:</strong> Até 120 dias corridos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="etapas" class="mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 text-center">Plano de Renovação por Etapas</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-8"></div>
+            <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Outra possibilidade seria fazer a compra por etapas. Para viabilizar o projeto, priorizando o maior impacto inicial.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-teal-600 flex flex-col bg-gradient-to-br from-white to-teal-50">
+                    <span class="text-sm font-bold text-teal-600 bg-teal-100 px-3 py-1 rounded-full self-start mb-4">ETAPA 1: CRUCIAL</span>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">O Núcleo da Nova Academia</h3>
+                    <p class="text-slate-600 mb-6 flex-grow">Esta fase foca na substituição dos equipamentos antigos pela estação WCSR e seus acessórios essenciais. É a mudança com o maior impacto, liberando espaço e multiplicando as opções de treino imediatamente.</p>
+                    <ul class="text-slate-700 space-y-3 mb-6">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Estação WCSR</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Banco Regulável</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Kit Barra e Anilhas (170kg)</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Puxadores Diversos</li>
+                    </ul>
+                    <div class="mt-auto pt-6 border-t border-slate-200">
+                        <p class="text-slate-600 text-sm">Investimento da Etapa 1:</p>
+                        <p class="text-3xl font-bold text-teal-700">R$ 53.907,05 <span class="text-lg font-semibold text-slate-500">(+ Frete)</span></p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col">
+                    <span class="text-sm font-bold text-slate-600 bg-slate-200 px-3 py-1 rounded-full self-start mb-4">ETAPA 2: COMPLEMENTAR</span>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">Finalizando os Inferiores</h3>
+                    <p class="text-slate-600 mb-6 flex-grow">A segunda etapa completa a modernização do setor de membros inferiores, substituindo as duas máquinas antigas por equipamentos novos, seguros e com biomecânica superior.</p>
+                     <ul class="text-slate-700 space-y-3 mb-6">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cadeira Extensora / Flexora</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cadeira Adutora / Abdutora</li>
+                    </ul>
+                    <div class="mt-auto pt-6 border-t border-slate-200">
+                         <p class="text-slate-600 text-sm">Investimento da Etapa 2:</p>
+                        <p class="text-3xl font-bold text-teal-700">R$ 47.300,00 <span class="text-lg font-semibold text-slate-500">(+ Frete)</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 text-center">Resumo dos Benefícios para o Condomínio</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mt-4 mb-12"></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Otimização de Espaço</h3>
+                        <p class="text-sm text-slate-600">Mais área livre para treinos diversos e melhor fluxo de pessoas.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                     <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                     </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Maior Variedade de Treinos</h3>
+                        <p class="text-sm text-slate-600">Um único equipamento permite dezenas de exercícios para todos.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                     <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                     </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Modernização e Segurança</h3>
+                        <p class="text-sm text-slate-600">Equipamentos novos com biomecânica superior e mais recursos de segurança.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                     <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                     </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Facilidade de Uso</h3>
+                        <p class="text-sm text-slate-600">Acesso a vídeos de exercícios via QR Code para guiar os moradores.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Valorização do Imóvel</h3>
+                        <p class="text-sm text-slate-600">Uma academia moderna é um grande diferencial que valoriza todo o condomínio.</p>
+                    </div>
+                </div>
+
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 flex items-center space-x-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1 text-slate-800">Aprovação Direta</h3>
+                        <p class="text-sm text-slate-600">Um investimento direto na saúde e bem-estar de todos os condôminos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <div class="container mx-auto px-6 text-center mb-16">
+        <a href="CONDOMINIO EDIFICIO OCEAN TOWERS RESIDENCE (1).pdf" download="Orcamento-Academia-Ocean-Towers.pdf" class="inline-flex items-center gap-3 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            <span>Baixar Orçamento Completo em PDF</span>
+        </a>
+    </div>
+
+    <footer class="bg-slate-900 text-white mt-12 textured-bg">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <p class="text-slate-500 text-sm">Proposta gerada em 15 de Setembro de 2025</p>
+        </div>
+    </footer>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wcsrData = {
+                cross: {
+                    title: 'Cross Over: Treinamento Funcional Completo',
+                    description: 'O módulo Cross Over possui polias duplas com 23 regulagens de altura, permitindo treinos com vetores livres em múltiplas direções. Ideal para exercícios de membros superiores e inferiores, com movimentos suaves e uma bateria de peso de até 95kg por lado.'
+                },
+                smith: {
+                    title: 'Máquina Smith: Segurança e Estabilidade',
+                    description: 'O Smith é perfeito para agachamentos e supinos com maior estabilidade, ideal para iniciantes e treinos com cargas elevadas. Sua barra guiada e travas de segurança laterais garantem um exercício controlado, confortável e, acima de tudo, seguro.'
+                },
+                rack: {
+                    title: 'Rack Livre: Para Treinos de Alta Performance',
+                    description: 'Para quem busca treinos com vetores livres, o módulo Rack é ideal para Levantamento de Peso Olímpico (LPO) e outros exercícios com barra. Possui 23 regulagens de altura e pás de segurança, garantindo um treino intenso e seguro mesmo com cargas elevadas.'
+                }
+            };
+
+            const wcsrImages = [
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-perspec.png',
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-perspec2.png',
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-traseira.png',
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-frontal.png',
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-topo.png',
+                'https://www.movement.com.br/wp-content/uploads/2023/02/wcsr-lateral.png'
+            ];
+
+            const mainImage = document.getElementById('main-wcsr-image');
+            const thumbnailContainer = document.getElementById('thumbnail-container');
+
+            function updateGallery(index) {
+                mainImage.src = wcsrImages[index];
+                const thumbnails = thumbnailContainer.querySelectorAll('.thumbnail-img');
+                thumbnails.forEach((thumb, i) => {
+                    if (i === index) {
+                        thumb.classList.remove('border-slate-300', 'opacity-60');
+                        thumb.classList.add('border-teal-500');
+                    } else {
+                        thumb.classList.remove('border-teal-500');
+                        thumb.classList.add('border-slate-300', 'opacity-60');
+                    }
+                });
+            }
+
+            wcsrImages.forEach((src, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = src;
+                thumb.alt = `Visão ${index + 1} do WCSR`;
+                thumb.classList.add('thumbnail-img', 'w-16', 'h-16', 'object-cover', 'rounded-lg', 'cursor-pointer', 'border-4', 'transition-all', 'duration-300', 'hover:opacity-100', 'hover:border-teal-400');
+                
+                thumb.addEventListener('click', () => updateGallery(index));
+                
+                thumbnailContainer.appendChild(thumb);
+            });
+
+            updateGallery(0);
+
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const wcsrTitle = document.getElementById('wcsr-title');
+            const wcsrDescription = document.getElementById('wcsr-description');
+
+            function updateWcsrContent(feature) {
+                wcsrTitle.innerText = wcsrData[feature].title;
+                wcsrDescription.innerText = wcsrData[feature].description;
+                
+                tabButtons.forEach(button => {
+                    button.classList.remove('tab-active');
+                    button.classList.add('tab-inactive');
+                });
+                document.getElementById(`tab-${feature}`).classList.add('tab-active');
+                document.getElementById(`tab-${feature}`).classList.remove('tab-inactive');
+            }
+            
+            updateWcsrContent('cross');
+
+            document.getElementById('tab-cross').addEventListener('click', () => updateWcsrContent('cross'));
+            document.getElementById('tab-smith').addEventListener('click', () => updateWcsrContent('smith'));
+            document.getElementById('tab-rack').addEventListener('click', () => updateWcsrContent('rack'));
+
+            const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+            const investmentChart = new Chart(investmentCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Estação WCSR', 'Extensora/Flexora', 'Abdutor/Adutor', 'Banco Regulável', 'Pesos e Acessórios'],
+                    datasets: [{
+                        label: 'Custo dos Equipamentos',
+                        data: [39900, 26000, 21300, 5100, 8907.05],
+                        backgroundColor: [
+                            '#0f766e', 
+                            '#0d9488', 
+                            '#14b8a6', 
+                            '#5eead4',
+                            '#a7f3d0'
+                        ],
+                        borderColor: '#f1f5f9',
+                        borderWidth: 3,
+                        hoverOffset: 12,
+                        hoverBorderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 13,
+                                    family: "'Inter', sans-serif"
+                                },
+                                color: '#475569'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleFont: {
+                                size: 14,
+                                family: "'Inter', sans-serif"
+                            },
+                            bodyFont: {
+                                size: 12,
+                                family: "'Inter', sans-serif"
+                            },
+                            padding: 10,
+                            cornerRadius: 4,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
